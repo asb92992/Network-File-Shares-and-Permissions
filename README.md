@@ -29,3 +29,33 @@
 - Folder: “write-access”,  Group: “Domain Users”, Permissions: “Read/Write”
 - Folder: “no-access”, Group: “Domain Admins”, “Permissions: “Read/Write”
 - (Skip accounting for now)
+
+# Attempt to access file shares as a normal user
+
+![file share part 3](https://user-images.githubusercontent.com/58159183/210943356-f3b8ab86-47e6-4093-83af-0e06f0f81202.gif)
+
+- On Client-1, navigate to the shared folder (start, run, \\dc-1)
+- Try to access the folders you just created. Which folders can you access? Which folders can you create stuff in? Does it make sense?
+
+# Create an “ACCOUNTANTS” Security Group, assign permissions, an test access
+
+![file share part 4](https://user-images.githubusercontent.com/58159183/210944333-d8d0fd05-61ce-47d8-a7a1-043687d7a986.gif)
+
+
+- Go back to DC-1, in Active Directory, create a security group called “ACCOUNTANTS”
+- On the “accounting” folder you created earlier, set the following permissions:
+- Folder: “accounting”, Group: “ACCOUNTANTS”, Permissions: “Read/Write”
+
+![file share part 5](https://user-images.githubusercontent.com/58159183/210945706-26f6936b-202a-40f6-8723-2e31630ce1a6.gif)
+
+- On Client-1, as  <someuser>, try to access the accountants folder. It should fail. 
+- Log out of Client-1 as  <someuser>
+- On DC-1, make <someuser> a member of the “ACCOUNTANTS”  Security Group
+- Sign back into Client-1 as <someuser> and try to access the “accounting” share in \\DC-1\ - Does it work now?
+
+
+
+
+
+
+
